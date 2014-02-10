@@ -1,12 +1,11 @@
-MANAGE=django-admin.py
-
 test:
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) test test42cc
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) test person
-
-run:
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) runserver
+	python manage.py test test42cc
+	python manage.py test person
 
 syncdb:
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) syncdb --noinput
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) migrate person
+	python manage.py syncdb --noinput
+	python manage.py migrate person
+	python manage.py loaddata fixtures/initial_data.json
+
+run:
+	python manage.py runserver
