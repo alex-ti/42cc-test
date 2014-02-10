@@ -9,4 +9,4 @@ run:
 
 syncdb:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) syncdb --noinput
-	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) loaddata fixtures/initial_data.json
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) migrate person
