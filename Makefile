@@ -1,13 +1,17 @@
+MANAGE=django-admin.py
+
 test:
-	python manage.py test test42cc
-	python manage.py test person
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) test42cc person
 
 run:
-	python manage.py runserver
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) runserver
 
 syncdb:
-	python manage.py syncdb --noinput
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) syncdb --noinput
 
 syncall:
-	python manage.py loaddata fixtures/initial_data.json
-	python manage.py syncdb --migrate --noinput
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) syncdb --migrate --noinput
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=test42cc.settings $(MANAGE) loaddata fixtures/initial_data.json
+
+clean:
+	find -type f -name "*.pyc" -delete
