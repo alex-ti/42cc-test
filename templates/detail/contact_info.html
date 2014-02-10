@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Контактные данные{% endblock %}
+
+{% block content %}
+
+    <div class="contact-info">
+        <div class="info-field"><label>Name:</label>{{ person.firstname }}</div>
+        <div class="info-field"><label>Last name:</label>{{ person.lastname }}</div>
+        <div class="info-field"><label>Date of birth:</label>{{ person.birthday }}</div>
+        <div class="info-field"><label>Bio:</label>{{ person.bio }}</div>
+    </div>
+
+    <div class="contact-info">
+        <div class="info-field"><label>E-mail:</label>{{ person.email }}</div>
+        <div class="info-field"><label>Jabber:</label>{{ person.jabber }}</div>
+        <div class="info-field"><label>Skype:</label>{{ person.skype }}</div>
+        <div class="info-field"><label>Other contacts:</label>{{ person.other }}</div>
+    </div>
+
+{% endblock %}

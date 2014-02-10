@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 # Django settings for test42cc project.
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -31,11 +32,11 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Kiev'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 SITE_ID = 1
 
@@ -73,9 +74,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -111,6 +110,12 @@ ROOT_URLCONF = 'test42cc.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'test42cc.wsgi.application'
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.static',
+)
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -131,6 +136,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     # 'south',
     'test42cc',
+    'person',
 )
 
 # A sample logging configuration. The only tangible logging
